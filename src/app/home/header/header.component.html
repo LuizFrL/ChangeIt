@@ -3,4 +3,7 @@
     <img src="../../../favicon.ico" width="50" height="50" class="d-inline-block align-items-center" alt="">
     {{ mainTitle }}
   </a>
+  <div>
+    <button type="button" class="navbar-brand button" *ngIf="isAdminUser" [routerLink]="['admin']">Admin</button>
+  </div>
 </nav>

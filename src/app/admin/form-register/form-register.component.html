@@ -1,0 +1,17 @@
+<div class="container-fluid pt-4">
+  <div class="row title m-1" (click)="gasStationRegister = !gasStationRegister">
+    <h1 class="col-12 container text-left">Registro de Posto</h1>
+  </div>
+  <div class="row container-fluid" *ngIf="gasStationRegister">
+    <app-form-register-gas-station></app-form-register-gas-station>
+  </div>
+
+  <div class="row title m-1 mt-2" (click)="gasAlterValues = !gasAlterValues">
+    <h1 class="col-12 container text-left">Alterar preço de Posto</h1>
+  </div>
+  <div class="row container-fluid" *ngIf="gasAlterValues">
+    <app-form-alter-gas-values></app-form-alter-gas-values>
+  </div>
+</div>
+<hr>
+<router-outlet></router-outlet>

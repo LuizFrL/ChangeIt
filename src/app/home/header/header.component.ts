@@ -8,6 +8,7 @@ import { mainTitle } from '../../core/utils';
 })
 export class HeaderComponent implements OnInit {
   mainTitle = mainTitle;
+  isAdminUser = true;
   constructor() { }
 
   ngOnInit(): void {
