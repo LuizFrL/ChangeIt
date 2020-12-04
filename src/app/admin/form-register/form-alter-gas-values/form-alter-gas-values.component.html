@@ -1,9 +1,11 @@
-<div class="container-fluid">
-  <h1 class="row">Gasolina</h1>
-  <div class="row">
+<form class="container-fluid" [formGroup]="formRegisterGasStation">
+  <h1 class="row col-12">Registro</h1>
+  <div class="row col-12 align-items-center">
     <mat-form-field appearance="legacy">
-      <mat-label>Cartão de credito</mat-label>
-      <input matInput type="number" placeholder="Valor Credito">
+      <mat-label>Região</mat-label>
+      <input matInput aria-label="Number" type="text" formControlName="region"
+             placeholder="Ex: Aguas Claras"
+             required>
     </mat-form-field>
-  </div>
-</div>
+
+</form>

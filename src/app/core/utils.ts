@@ -1,1 +1,1 @@
-export const mainTitle = 'Hash Fuel';
+export const mainTitle = 'Know Gas';
