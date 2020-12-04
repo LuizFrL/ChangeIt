@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-form-register-gas-station',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-register-gas-station.component.css']
 })
 export class FormRegisterGasStationComponent implements OnInit {
-
-  constructor() { }
+  formRegisterGasStation: FormGroup;
+  constructor(
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
+    this.formRegisterGasStation = this.formBuilder.group({
+      region: ['', Validators.required],
+      gasStationName: ['', Validators.required],
+      location: ['', Validators.required]
+    });
   }
 
 }

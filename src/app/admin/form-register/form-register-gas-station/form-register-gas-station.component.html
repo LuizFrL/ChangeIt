@@ -1,1 +1,22 @@
-<p>form-register-gas-station works!</p>
+<form class="container-fluid" [formGroup]="formRegisterGasStation">
+  <p> Value{{ formRegisterGasStation.value | json }}</p>
+  <h1 class="row">Registro</h1>
+  <div class="row">
+    <mat-form-field appearance="legacy">
+      <mat-label>Região</mat-label>
+      <input matInput type="text" formControlName="region" placeholder="Ex: Aguas Claras">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field appearance="legacy">
+      <mat-label>Nome do Posto</mat-label>
+      <input matInput type="text" formControlName="gasStationName" placeholder="Ex: Ipiranga">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field appearance="legacy">
+      <mat-label>Localizacao</mat-label>
+      <input matInput type="text" formControlName="location" placeholder="Ex: Aguas Claras">
+    </mat-form-field>
+  </div>
+</form>
