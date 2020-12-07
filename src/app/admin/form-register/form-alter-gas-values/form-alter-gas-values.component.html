@@ -4,7 +4,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Região</mat-label>
       <mat-select formControlName="region">
-        <mat-option *ngFor="let region of regions$ | async" [value]="region">
+        <mat-option *ngFor="let region of regions$ | async" [value]="region" (click)="onSelectRegion()">
           {{ region }}
         </mat-option>
       </mat-select>
@@ -14,7 +14,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Posto</mat-label>
       <mat-select formControlName="gasStation">
-        <mat-option *ngFor="let gasStation of gasStations$ | async" [value]="gasStation.key">
+        <mat-option *ngFor="let gasStation of gasStations$ | async" [value]="gasStation.key" (click)="onSelectGasStation()">
           {{ gasStation.gasStationName }} | {{ gasStation.location }}
         </mat-option>
       </mat-select>

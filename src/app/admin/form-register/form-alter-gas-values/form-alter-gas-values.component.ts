@@ -30,18 +30,6 @@ export class FormAlterGasValuesComponent implements OnInit {
       MoneyDebit: [null, Validators.required]
     });
     this.regions$ = this.gasStationService.getRegions();
-    this.formAlterGasStationValues.valueChanges.subscribe(
-      value => {
-        if (value.region) {
-          this.gasStations$ = this.gasStationService.getGasStationsOfRegion(value.region);
-        }
-        if (value.gasStation) {
-          this.gasStationService.getGasStationsGasolineValues(value.region, value.gasStation).subscribe(
-            gasolineValues => this.gasolineValues = gasolineValues
-          );
-        }
-      }
-    );
   }
 
   alterGasStationValues(): void {
@@ -49,9 +37,21 @@ export class FormAlterGasValuesComponent implements OnInit {
     const region = this.formAlterGasStationValues.get('region').value;
     this.gasStationService.setGasStationsGasolineValues(key, region, {
       Credit: this.formAlterGasStationValues.get('Credit').value,
-      MoneyDebit: this.formAlterGasStationValues.get('MoneyDebit').value
+      MoneyDebit: this.formAlterGasStationValues.get('MoneyDebit').value,
+      date: Date.now()
     });
     this.formAlterGasStationValues.reset();
     this.gasolineValues = null;
+  }
+
+  onSelectRegion(): void {
+    const value = this.formAlterGasStationValues.value;
+    this.gasStations$ = this.gasStationService.getGasStationsOfRegion(value.region);
+  }
+  onSelectGasStation(): void {
+    const value = this.formAlterGasStationValues.value;
+    this.gasStationService.getGasStationsGasolineValues(value.region, value.gasStation).subscribe(
+      gasolineValues => this.gasolineValues = gasolineValues
+    );
   }
 }
