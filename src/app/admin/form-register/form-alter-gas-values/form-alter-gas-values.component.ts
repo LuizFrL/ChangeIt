@@ -37,8 +37,7 @@ export class FormAlterGasValuesComponent implements OnInit {
     const region = this.formAlterGasStationValues.get('region').value;
     this.gasStationService.setGasStationsGasolineValues(key, region, {
       Credit: this.formAlterGasStationValues.get('Credit').value,
-      MoneyDebit: this.formAlterGasStationValues.get('MoneyDebit').value,
-      date: Date.now()
+      MoneyDebit: this.formAlterGasStationValues.get('MoneyDebit').value
     });
     this.formAlterGasStationValues.reset();
     this.gasolineValues = null;

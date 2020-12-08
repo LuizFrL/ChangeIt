@@ -14,6 +14,7 @@ export class FormRegisterGasStationComponent implements OnInit {
 
   regions = [];
   filter = '';
+  actualLocation;
   constructor(
     private formBuilder: FormBuilder,
     private gasStationService: GasStationService
@@ -35,9 +36,22 @@ export class FormRegisterGasStationComponent implements OnInit {
 
   addGasStation(): void {
     const gasStationInf = this.formRegisterGasStation.getRawValue() as GasStationInf;
+    gasStationInf.inf.coordinates = this.actualLocation;
     this.gasStationService.insertGasStation(gasStationInf);
     this.formRegisterGasStation.reset();
     this.formGasStationInf.reset();
   }
 
+  getActualLocation(): void {
+    navigator?.geolocation.getCurrentPosition(position => {
+      this.actualLocation = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        accuracy: position.coords.accuracy
+      };
+    },
+      error => {
+        alert(error.message);
+      }, {enableHighAccuracy: true});
+  }
 }

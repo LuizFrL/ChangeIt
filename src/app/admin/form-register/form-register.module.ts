@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { FilterByRegionPipe } from './filter-by-region.pipe';
 import {MatSelectModule} from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [FormRegisterComponent, FormRegisterGasStationComponent, FormAlterGasValuesComponent, FilterByRegionPipe ],
@@ -23,7 +24,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     MatButtonModule,
     MatAutocompleteModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule
   ]
 })
 export class FormRegisterModule { }
