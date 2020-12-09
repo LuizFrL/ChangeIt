@@ -55,4 +55,7 @@ export class GasStationService {
     data.date = Date.now();
     this.db.list(`gasStations/${region}/${id}/Values`).set('gasoline', data);
   }
+  setGasStationsPromotions(id: string, region: string, data): void {
+    this.db.list(`gasStations/${region}/${id}/Values`).set('promotions', data);
+  }
 }

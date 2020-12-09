@@ -27,7 +27,8 @@ export class FormAlterGasValuesComponent implements OnInit {
       region: ['', Validators.required],
       gasStation: ['', Validators.required],
       Credit: [null, Validators.required],
-      MoneyDebit: [null, Validators.required]
+      MoneyDebit: [null, Validators.required],
+      promotions: ['']
     });
     this.regions$ = this.gasStationService.getRegions();
   }
@@ -39,6 +40,7 @@ export class FormAlterGasValuesComponent implements OnInit {
       Credit: this.formAlterGasStationValues.get('Credit').value,
       MoneyDebit: this.formAlterGasStationValues.get('MoneyDebit').value
     });
+    this.gasStationService.setGasStationsPromotions(key, region, this.formAlterGasStationValues.get('promotions').value);
     this.formAlterGasStationValues.reset();
     this.gasolineValues = null;
   }

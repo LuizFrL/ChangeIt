@@ -14,7 +14,8 @@
     <mat-form-field appearance="fill">
       <mat-label>Posto</mat-label>
       <mat-select formControlName="gasStation">
-        <mat-option *ngFor="let gasStation of gasStations$ | async" [value]="gasStation.key" (click)="onSelectGasStation()">
+        <mat-option *ngFor="let gasStation of gasStations$ | async" [value]="gasStation.key"
+                    (click)="onSelectGasStation()">
           {{ gasStation.gasStationName }} | {{ gasStation.location }}
         </mat-option>
       </mat-select>
@@ -34,6 +35,12 @@
         <input matInput type="number" formControlName="MoneyDebit"
                placeholder="Debito ou Dinheiro" required>
         <mat-hint>Valor atual: {{ gasolineValues?.MoneyDebit ? gasolineValues?.MoneyDebit : 'Sem valor' }}</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="legacy" class="col-12">
+        <mat-label>Promoções</mat-label>
+        <textarea matInput formControlName="promotions" placeholder="Ex: Com melius tem 10 de cashback"></textarea>
       </mat-form-field>
     </div>
     <div class="row">
