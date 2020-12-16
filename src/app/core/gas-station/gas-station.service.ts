@@ -15,8 +15,13 @@ export class GasStationService {
   ) {
   }
 
-  getAll(): Observable<GasStationInf[]> {
-    return this.db.list<GasStationInf>('/gasStations/').valueChanges();
+  getAllByRegion(region: string): Observable<any> {
+    return this.db.list<GasStationInf>(`/gasStations/${region}`).snapshotChanges().pipe(
+      map(changes => {
+        // @ts-ignore
+        return changes.map( c => ({key: c.payload.key, ...c.payload.val() }));
+      })
+    );
   }
 
   insertGasStation(gasStationInf: GasStationInf): void {

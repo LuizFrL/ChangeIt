@@ -7,6 +7,15 @@ const routes: Routes = [
     pathMatch: 'full',
     loadChildren: () => import('./admin/admin.module').then(module => module.AdminModule)
   },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'gasStations'
+  },
+  {
+    path: 'gasStations',
+    loadChildren: () => import('./gas-station/gas-station.module').then(module => module.GasStationModule)
+  }
 ];
 
 @NgModule({
