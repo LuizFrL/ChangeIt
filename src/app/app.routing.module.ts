@@ -10,10 +10,6 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'gasStations'
-  },
-  {
-    path: 'gasStations',
     loadChildren: () => import('./gas-station/gas-station.module').then(module => module.GasStationModule)
   }
 ];
