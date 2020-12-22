@@ -11,6 +11,10 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     loadChildren: () => import('./gas-station/gas-station.module').then(module => module.GasStationModule)
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 
