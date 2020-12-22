@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {GasStationService} from '../../../core/gas-station/gas-station.service';
 import {GasStation} from '../../../core/gas-station/gas-station';
 
@@ -51,8 +51,8 @@ export class FormAlterGasValuesComponent implements OnInit {
   }
   onSelectGasStation(): void {
     const value = this.formAlterGasStationValues.value;
-    this.gasStationService.getGasStationsGasolineValues(value.region, value.gasStation).subscribe(
-      gasolineValues => this.gasolineValues = gasolineValues
+    this.gasStationService.getGasStationsValues(value.region, value.gasStation).subscribe(
+      gasolineValues => this.gasolineValues = gasolineValues[0]
     );
   }
 }

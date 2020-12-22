@@ -47,18 +47,13 @@ export class GasStationService {
       );
   }
 
-  getGasStationsGasolineValues(region: string, id: string): Observable<any> {
-    return this.db.list(`gasStations/${region}/${id}/Values`).snapshotChanges().pipe(
-      map(changes => {
-        // @ts-ignore
-        return changes.map(c => ({...c.payload.val()}))[0];
-      })
-    );
+  getGasStationsValues(region: string, id: string): Observable<any> {
+    return this.db.list(`gasStations/${region}/${id}`).valueChanges();
   }
 
   setGasStationsGasolineValues(id: string, region: string, data): void {
-    data.date = Date.now();
     this.db.list(`gasStations/${region}/${id}/Values`).set('gasoline', data);
+    this.db.list(`gasStations/${region}/${id}/Values`).set('date', Date.now());
   }
   setGasStationsPromotions(id: string, region: string, data): void {
     this.db.list(`gasStations/${region}/${id}/Values`).set('promotions', data);

@@ -1,3 +1,3 @@
-<div class="container-fluid" *ngFor="let gasStation of gasStations$ | async;">
-  <app-gas-station-form-inf></app-gas-station-form-inf>
+<div class="container-fluid mt-2" *ngFor="let gasStation of gasStations$ | async;">
+  <app-gas-station-form-inf [gasStation]="gasStation"></app-gas-station-form-inf>
 </div>
