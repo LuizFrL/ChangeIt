@@ -1,18 +1,29 @@
 <mat-card class="example-card">
+  <!--    <img src="assets/petrol.png" class="img-thumbnail">-->
   <mat-card-header>
     <mat-card-title class="title">{{ gasStation.gasStationName }}</mat-card-title>
     <mat-card-subtitle>{{ gasStation.location }}</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
-    <div class="row">
-      <p class="col-12">Gasolina</p>
-    </div>
-    <div class="row">
-      <p class="col-6 text-center">Credito: ${{gasStation.Values.gasoline.Credit}}</p>
-      <p class="col-6 text-center">Deb/Din: ${{gasStation.Values.gasoline.MoneyDebit}}</p>
-    </div>
+  <mat-card-content class="main-card">
+    <table class="table table-borderless text-center">
+      <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Crédito</th>
+        <th scope="col">Debito</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">Gasolina<br>Comum</th>
+        <td>${{gasStation.Values.gasoline.Credit}}</td>
+        <td>${{gasStation.Values.gasoline.MoneyDebit}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <p><mat-icon class="icone">monetization_on</mat-icon> {{ gasStation.Values.promotions ? gasStation.Values.promotions : "Sem Promoção" }}</p>
   </mat-card-content>
-  <mat-card-subtitle>
-    <p>Preço Atualiado em: {{ gasStation.Values.date | date: 'dd/MM/YYYY, h:mm a' }}</p>
+  <mat-card-subtitle class="subtitle">
+    Preço Atualiado em: {{ gasStation.Values.date | date: 'dd/MM/YYYY, h:mm a' }}
   </mat-card-subtitle>
 </mat-card>

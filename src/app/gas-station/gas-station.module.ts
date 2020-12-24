@@ -4,6 +4,7 @@ import {GasStationRoutingModule} from './gas-station.routing.module';
 import {GasStationFormInfComponent} from './gas-station-form-inf/gas-station-form-inf.component';
 import { GasStationComponent } from './gas-station.component';
 import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import {MatCardModule} from '@angular/material/card';
     CommonModule,
     MatCardModule,
     GasStationRoutingModule,
+    MatIconModule,
   ]
 })
 export class GasStationModule { }
