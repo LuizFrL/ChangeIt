@@ -16,7 +16,7 @@ img {
 
 th {
   width: 1px;
-  padding: 6px 0 0;
+  padding: 6px 0 6px;
 }
 td {
   padding: 6px;
@@ -29,5 +29,13 @@ td {
   border-radius: 1rem;
 }
 p {
-  padding: 10px;
+  padding: 0 10px 10px;
+}
+.location-icon {
+  position: absolute;
+  right: 3%;
+  top: 6.5%;
+}
+a {
+  color: black;
 }
