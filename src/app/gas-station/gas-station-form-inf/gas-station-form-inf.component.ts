@@ -14,4 +14,7 @@ export class GasStationFormInfComponent implements OnInit {
 
   }
 
+  redirectToMaps(latitude: number, longitude: number): void {
+    window.open(`https://www.google.com.br/maps/search/${latitude},+${longitude}`);
+  }
 }

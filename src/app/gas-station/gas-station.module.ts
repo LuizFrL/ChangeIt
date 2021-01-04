@@ -8,18 +8,20 @@ import {MatIconModule} from '@angular/material/icon';
 import {OrderValuesListPipe} from './order-values-list.pipe';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
   declarations: [GasStationFormInfComponent, GasStationComponent, OrderValuesListPipe],
-  imports: [
-    CommonModule,
-    MatCardModule,
-    GasStationRoutingModule,
-    MatIconModule,
-    FormsModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-  ]
+    imports: [
+        CommonModule,
+        MatCardModule,
+        GasStationRoutingModule,
+        MatIconModule,
+        FormsModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+    ]
 })
 export class GasStationModule { }

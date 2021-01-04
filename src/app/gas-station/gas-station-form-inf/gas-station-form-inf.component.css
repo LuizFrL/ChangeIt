@@ -1,15 +1,6 @@
 .mat-card {
   background-color: #ffd400ad;
 }
-img {
-  background-color: #fff0;
-  border: #fff0;
-  max-width: 50%;
-  height: 60%;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
 .subtitle {
   font-size: small;
 }
@@ -38,4 +29,11 @@ p {
 }
 a {
   color: black;
+}
+
+.font-size {
+  font-size: 15px;
+}
+button {
+  line-height: 25px;
 }

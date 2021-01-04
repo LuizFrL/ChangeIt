@@ -1,15 +1,8 @@
 <mat-card class="example-card" *ngIf="gasStation.Values">
-  <!--    <img src="assets/petrol.png" class="img-thumbnail">-->
   <mat-card-header class="d-block">
     <div class="container-fluid">
       <div class="row">
         <mat-card-title class="title m-0">{{ gasStation.gasStationName }}</mat-card-title>
-        <a
-          href="https://www.google.com.br/maps/search/{{gasStation.coordinates.latitude}},+{{gasStation.coordinates.longitude}}"
-          target="_blank">
-          <mat-icon class="location-icon">location_on
-          </mat-icon>
-        </a>
       </div>
       <div class="row">
         <mat-card-subtitle>{{ gasStation.location }}</mat-card-subtitle>
@@ -40,4 +33,16 @@
   <mat-card-subtitle class="subtitle">
     Preço Atualiado em: {{ gasStation.Values.date | date: 'dd/MM/YYYY, h:mm a' }}
   </mat-card-subtitle>
+  <mat-card-footer>
+    <div class="container-fluid">
+      <div class="row">
+        <button mat-button class="col-12"
+                (click)="redirectToMaps(gasStation.coordinates.latitude, gasStation.coordinates.longitude)">
+          <mat-icon>location_on</mat-icon>
+          <br>
+          Local
+        </button>
+      </div>
+    </div>
+  </mat-card-footer>
 </mat-card>
