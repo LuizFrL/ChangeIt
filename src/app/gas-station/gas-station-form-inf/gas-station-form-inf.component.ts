@@ -26,9 +26,9 @@ export class GasStationFormInfComponent implements OnInit {
 
     navigator.share({
       title: 'Economize dinheiro!!',
-      text: 'O preço mais barato para abastecer seu carro você encontra aqui!',
+      text: `O preço mais agradavel para abastecer seu carro você encontra bem aqui!`,
       url: `https://www.google.com.br/maps/search/${latitude},+${longitude}`
     })
-      .catch(error => alert('Error sharing: ' + error));
+      .catch(error => console.log('Error sharing: ' + error));
   }
 }
