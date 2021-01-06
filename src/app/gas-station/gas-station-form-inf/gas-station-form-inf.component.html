@@ -35,12 +35,18 @@
   </mat-card-subtitle>
   <mat-card-footer>
     <div class="container-fluid">
-      <div class="row">
-        <button mat-button class="col-12"
+      <div class="row p-1">
+        <button mat-button class="col-6"
                 (click)="redirectToMaps(gasStation.coordinates.latitude, gasStation.coordinates.longitude)">
           <mat-icon>location_on</mat-icon>
           <br>
           Local
+        </button>
+        <button mat-button class="col-6"
+                (click)="share(gasStation.coordinates.latitude, gasStation.coordinates.longitude)">
+          <mat-icon>share</mat-icon>
+          <br>
+          Compartilhar
         </button>
       </div>
     </div>
