@@ -1,6 +1,7 @@
 .mat-card {
   background-color: #ffd400ad;
 }
+
 .subtitle {
   font-size: small;
 }
@@ -9,24 +10,30 @@ th {
   width: 1px;
   padding: 6px 0 6px;
 }
+
 td {
   padding: 6px;
 }
+
 .icone {
   vertical-align: bottom;
 }
+
 .main-card {
   background-color: #ffec64;
   border-radius: 1rem;
 }
+
 p {
   padding: 0 10px 10px;
 }
+
 .location-icon {
   position: absolute;
   right: 3%;
   top: 6.5%;
 }
+
 a {
   color: black;
 }
@@ -34,6 +41,17 @@ a {
 .font-size {
   font-size: 15px;
 }
+
 button {
   line-height: 25px;
+}
+
+mat-card {
+
+  -webkit-touch-callout: none; /* iPhone OS, Safari */
+  -webkit-user-select: none; /* Chrome, Safari 3 */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  user-select: none; /* Possível implementação no futuro */
+
 }
