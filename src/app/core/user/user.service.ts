@@ -12,7 +12,8 @@ import {Router} from '@angular/router';
 export class UserService {
   user$: Observable<null>;
   private currentAdmins;
-  isAdminUser = new BehaviorSubject(false);
+  isAdminUser$ = new BehaviorSubject(false);
+
   constructor(
     private angularAuth: AngularFireAuth,
     private db: AngularFireDatabase,
@@ -32,8 +33,14 @@ export class UserService {
       admins => this.currentAdmins = admins
     );
     angularAuth.onAuthStateChanged(user => {
-      if (user){
-        this.isAdminUser.next(user.uid in this.currentAdmins);
+      if (user) {
+        if (this.currentAdmins) {
+          this.isAdminUser$.next(user.uid in this.currentAdmins);
+        } else {
+          this.isAdminUser$.next(false);
+        }
+      } else {
+        this.isAdminUser$.next(false);
       }
     });
   }

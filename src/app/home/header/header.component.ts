@@ -9,7 +9,7 @@ import {UserService} from '../../core/user/user.service';
 })
 export class HeaderComponent implements OnInit {
   mainTitle = mainTitle;
-  isAdminUser;
+  isAdminUser$;
   user;
   constructor(
     private userService: UserService
@@ -18,9 +18,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.isAdminUser.subscribe(
-      isAdmUser => this.isAdminUser = isAdmUser
-    );
+    this.isAdminUser$ = this.userService.isAdminUser$;
   }
 
   login(): void {

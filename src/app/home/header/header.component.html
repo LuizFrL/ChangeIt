@@ -4,7 +4,7 @@
     {{ mainTitle }}
   </a>
   <div>
-    <button type="button" class="navbar-brand button" *ngIf="isAdminUser" [routerLink]="['admin']">Admin</button>
+    <button type="button" class="navbar-brand button" *ngIf="isAdminUser$ | async" [routerLink]="['admin']">Admin</button>
   </div>
   <div *ngIf="!user">
     <button type="button" class="navbar-brand button" (click)="login()">Login</button>
