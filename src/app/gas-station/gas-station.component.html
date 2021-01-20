@@ -14,7 +14,7 @@
     </form>
   </div>
 </div>
-<div class="container-fluid mt-2"
+<div class="container-fluid mt-2 maxWidth"
      *ngFor="let gasStation of gasStations$ | async | orderValuesList: actualOrder;">
   <app-gas-station-form-inf [gasStation]="gasStation"></app-gas-station-form-inf>
 </div>
