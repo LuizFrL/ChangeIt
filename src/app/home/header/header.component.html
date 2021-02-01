@@ -3,13 +3,38 @@
     <img src="../../../favicon.ico" width="50" height="50" class="d-inline-block align-items-center" alt="">
     {{ mainTitle }}
   </a>
-  <div>
-    <button type="button" class="navbar-brand button" *ngIf="isAdminUser$ | async" [routerLink]="['admin']">Admin</button>
-  </div>
-  <div *ngIf="!user">
-    <button type="button" class="navbar-brand button" (click)="login()">Login</button>
-  </div>
-  <div  *ngIf="user">
-    <button type="button" class="navbar-brand button" (click)="logOut()">logOut</button>
+  <div class="menu-btn" [ngClass]="{
+    'open': menuOpen,
+    'close': !menuOpen
+  }" (click)="toggleMenu()">
+    <div class="menu-btn__burger"></div>
   </div>
 </nav>
+
+<div class="list"
+  [class.invisible]="!menuOpen">
+  <ul (click)="menuOpen = !menuOpen">
+    <li *ngIf="this.router.url === '/'">
+      <div>
+        <a [routerLink]="['']"> <mat-icon>home</mat-icon>Home</a>
+      </div>
+    </li>
+    <li *ngIf="isAdminUser$ | async">
+      <div>
+        <a [routerLink]="['admin']"> <mat-icon>admin_panel_settings</mat-icon> Admin</a>
+      </div>
+    </li>
+    <li *ngIf="user; else loginButton">
+      <div>
+        <a (click)="logOut()"><mat-icon>logout</mat-icon>logOut</a>
+      </div>
+    </li>
+    <ng-template #loginButton>
+      <li>
+        <div>
+          <a (click)="login()"><mat-icon>login</mat-icon>Login</a>
+        </div>
+      </li>
+    </ng-template>
+  </ul>
+</div>

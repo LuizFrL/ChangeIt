@@ -21,8 +21,8 @@
       <tbody>
       <tr>
         <th scope="row">Gasolina<br>Comum</th>
-        <td>${{gasStation.Values.gasoline.Credit}}</td>
-        <td>${{gasStation.Values.gasoline.MoneyDebit}}</td>
+        <td>${{ (gasStation.Values.gasoline.Credit).toFixed(3) }}</td>
+        <td>${{ (gasStation.Values.gasoline.MoneyDebit).toFixed(3) }}</td>
       </tr>
       </tbody>
     </table>

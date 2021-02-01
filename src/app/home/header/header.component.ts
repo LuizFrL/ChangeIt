@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { mainTitle } from '../../core/utils';
 import {UserService} from '../../core/user/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +12,10 @@ export class HeaderComponent implements OnInit {
   mainTitle = mainTitle;
   isAdminUser$;
   user;
+  menuOpen = false;
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    public router: Router
   ) {
     userService.user$.subscribe(user => this.user = user);
   }
@@ -27,5 +30,9 @@ export class HeaderComponent implements OnInit {
 
   logOut(): void {
     this.userService.logOut();
+  }
+
+  toggleMenu(): void{
+    this.menuOpen = !this.menuOpen;
   }
 }

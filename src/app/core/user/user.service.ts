@@ -32,13 +32,10 @@ export class UserService {
     this.db.object(`admin`).valueChanges().subscribe(
       admins => this.currentAdmins = admins
     );
-    angularAuth.onAuthStateChanged(user => {
-      if (user) {
-        if (this.currentAdmins) {
-          this.isAdminUser$.next(user.uid in this.currentAdmins);
-        } else {
-          this.isAdminUser$.next(false);
-        }
+    this.user$.subscribe(user => {
+      if (user && this.currentAdmins) {
+        // @ts-ignore
+        this.isAdminUser$.next(user.uid in this.currentAdmins);
       } else {
         this.isAdminUser$.next(false);
       }
