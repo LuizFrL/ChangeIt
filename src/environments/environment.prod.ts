@@ -10,3 +10,4 @@ export const environment = {
     appId: '1:134228045047:web:cc083ee5e182472d96f7f2'
   }
 };
+export const apiKey = environment.firebase.apiKey;

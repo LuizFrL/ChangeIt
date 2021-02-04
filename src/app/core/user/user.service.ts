@@ -11,7 +11,6 @@ import {Router} from '@angular/router';
 })
 export class UserService {
   user$: Observable<null>;
-  private currentAdmins;
   isAdminUser$ = new BehaviorSubject(false);
 
   constructor(
@@ -29,13 +28,14 @@ export class UserService {
           return of(null);
         }
       }));
-    this.db.object(`admin`).valueChanges().subscribe(
-      admins => this.currentAdmins = admins
-    );
     this.user$.subscribe(user => {
-      if (user && this.currentAdmins) {
-        // @ts-ignore
-        this.isAdminUser$.next(user.uid in this.currentAdmins);
+      if (user) {
+        this.db.object(`admin`).valueChanges().subscribe(
+          admins => {
+            // @ts-ignore
+            this.isAdminUser$.next(user.uid in admins);
+          }
+        );
       } else {
         this.isAdminUser$.next(false);
       }

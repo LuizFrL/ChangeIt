@@ -1,6 +1,18 @@
 {
   "rules": {
-    ".read": true,
-    ".write": true
+    "admin": {
+      ".read": "data.child(auth.uid).val() === true",
+      ".write": false
+    },
+    "users":{
+      "$uid": {
+        ".write": "$uid === auth.uid",
+        ".read": "$uid === auth.uid"
+      },
+    },
+    "gasStations": {
+      ".read": "true",
+      ".write": "data.parent().child('/admin/' + auth.uid).val() === true"
+    }
   }
 }
