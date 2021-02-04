@@ -24,8 +24,8 @@ export class GasStationService {
     );
   }
 
-  insertGasStation(gasStationInf: GasStationInf): void {
-    this.db.list(`gasStations/${gasStationInf.region}`).push(gasStationInf.inf);
+  insertGasStation(gasStationInf: any): void {
+    this.db.list(`gasStations/${gasStationInf.region}`).update(gasStationInf.place_id, gasStationInf.inf);
   }
 
   getRegions(): Observable<string[]> {

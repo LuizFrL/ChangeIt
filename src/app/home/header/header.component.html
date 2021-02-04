@@ -14,7 +14,7 @@
 <div class="list"
   [class.invisible]="!menuOpen">
   <ul (click)="menuOpen = !menuOpen">
-    <li *ngIf="this.router.url === '/'">
+    <li *ngIf="this.router.url !== '/'">
       <div>
         <a [routerLink]="['']"> <mat-icon>home</mat-icon>Home</a>
       </div>

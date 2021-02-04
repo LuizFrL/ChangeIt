@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {GasStationSearchService} from '../../core/admin/gas-station-search.service';
 
 @Component({
   selector: 'app-form-register',

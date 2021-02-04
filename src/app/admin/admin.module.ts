@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AdminRoutingModule } from './admin.routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {AdminRoutingModule} from './admin.routing.module';
 import {FormRegisterModule} from './form-register/form-register.module';
+
 
 
 @NgModule({
@@ -9,7 +10,8 @@ import {FormRegisterModule} from './form-register/form-register.module';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormRegisterModule
-  ]
+    FormRegisterModule,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {
+}

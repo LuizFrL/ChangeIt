@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {getDistance} from '../../core/utils';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class GasStationFormInfComponent implements OnInit {
 
   ngOnInit(): void {
     const watchId = navigator.geolocation.watchPosition(userLocation => {
-      this.gasStation.coordinates.actualUserDistance = this.getDistance(userLocation.coords, this.gasStation.coordinates);
+      this.gasStation.coordinates.actualUserDistance = getDistance(userLocation.coords, this.gasStation.coordinates);
     });
   }
 
@@ -34,20 +35,5 @@ export class GasStationFormInfComponent implements OnInit {
       url: `https://www.google.com.br/maps/search/${latitude},+${longitude}`
     })
       .catch(error => console.log('Error sharing: ' + error));
-  }
-
-  getDistance(geolocation1, geolocation2): string {
-    const rad = (x) => {
-      return x * Math.PI / 180;
-    };
-
-    const R = 6378.137;
-    const dLat = rad(geolocation2.latitude - geolocation1.latitude);
-    const dLong = rad(geolocation2.longitude - geolocation1.longitude);
-    // tslint:disable-next-line:max-line-length
-    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(rad(geolocation1.latitude)) * Math.cos(rad(geolocation2.latitude)) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    const d = R * c;
-    return d.toFixed(2);
   }
 }

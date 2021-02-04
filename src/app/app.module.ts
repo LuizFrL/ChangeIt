@@ -8,6 +8,7 @@ import {AngularFireModule} from '@angular/fire';
 import { AppComponent } from './app.component';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,8 +21,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFireModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
