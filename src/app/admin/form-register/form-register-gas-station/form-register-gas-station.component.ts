@@ -63,10 +63,8 @@ export class FormRegisterGasStationComponent implements OnInit {
   }
 
   getDistanceGasStation(gasStation: any): string {
-    if (this.actualLocation) {
-      return getDistance(this.actualLocation, this.getGasStationCoords(gasStation.geometry.location));
-    }
-    return '';
+    // @ts-ignore
+    return getDistance(window.currentUserLocation, this.getGasStationCoords(gasStation.geometry.location));
   }
 
   getGasStationCoords(gasStation): any {

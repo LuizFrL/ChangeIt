@@ -8,7 +8,7 @@
       "$uid": {
         ".write": "$uid === auth.uid",
         ".read": "$uid === auth.uid"
-      },
+      }
     },
     "gasStations": {
       ".read": "true",

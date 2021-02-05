@@ -34,7 +34,8 @@ export class UserService {
           admins => {
             // @ts-ignore
             this.isAdminUser$.next(user.uid in admins);
-          }
+          },
+          error => {}
         );
       } else {
         this.isAdminUser$.next(false);

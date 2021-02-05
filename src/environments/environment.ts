@@ -16,3 +16,4 @@ export const environment = {
 };
 
 export const apiKey = environment.firebase.apiKey;
+export const API = 'http://localhost:3000';

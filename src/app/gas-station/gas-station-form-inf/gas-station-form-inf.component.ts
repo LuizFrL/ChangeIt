@@ -14,9 +14,8 @@ export class GasStationFormInfComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const watchId = navigator.geolocation.watchPosition(userLocation => {
-      this.gasStation.coordinates.actualUserDistance = getDistance(userLocation.coords, this.gasStation.coordinates);
-    });
+    // @ts-ignore
+    this.gasStation.coordinates.actualUserDistance = getDistance(window.currentUserLocation, this.gasStation.coordinates);
   }
 
   redirectToMaps(latitude: number, longitude: number): void {
