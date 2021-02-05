@@ -11,4 +11,4 @@ export const environment = {
   }
 };
 export const apiKey = environment.firebase.apiKey;
-export const API = 3000;
+export const API = 'https://us-central1-fuelcompanyhash.cloudfunctions.net/api';
