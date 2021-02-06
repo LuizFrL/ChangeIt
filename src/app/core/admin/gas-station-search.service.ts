@@ -21,7 +21,7 @@ export class GasStationSearchService {
     const options = {
       params: new HttpParams()
         .set('location', this.currentUserCoords)
-        .set('radius', '1000')
+        .set('radius', '500')
         .set('type', 'gas_station')
         .set('key', apiKey)
     };

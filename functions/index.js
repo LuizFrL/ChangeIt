@@ -28,6 +28,6 @@ app.get('', (request, response) => {
   response.send('Version 1.0')
 })
 
-// app.listen(3000, () => {
-//   console.log(`Server running at http://localhost:3000`)
-// })
+app.listen(3000, () => {
+  console.log(`Server running at http://localhost:3000`)
+})

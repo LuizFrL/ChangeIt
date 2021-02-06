@@ -28,15 +28,6 @@ export class GasStationService {
     this.db.list(`gasStations/${gasStationInf.region}`).update(gasStationInf.place_id, gasStationInf.inf);
   }
 
-  getRegions(): Observable<string[]> {
-    return this.db.list('gasStations/')
-      .snapshotChanges().pipe(
-        map(changes => {
-          return changes.map(c => (c.payload.key));
-        })
-      );
-  }
-
   getGasStationsOfRegion(region: string): Observable<GasStation[]> {
     return this.db.list(`gasStations/${region}`)
       .snapshotChanges().pipe(
@@ -51,11 +42,9 @@ export class GasStationService {
     return this.db.list(`gasStations/${region}/${id}`).valueChanges();
   }
 
-  setGasStationsGasolineValues(id: string, region: string, data): void {
-    this.db.list(`gasStations/${region}/${id}/Values`).set('gasoline', data);
+  setGasStationsValues(id: string, region: string, data): void {
+    this.db.list(`gasStations/${region}/${id}`).set('Values', data);
     this.db.list(`gasStations/${region}/${id}/Values`).set('date', Date.now());
   }
-  setGasStationsPromotions(id: string, region: string, data): void {
-    this.db.list(`gasStations/${region}/${id}/Values`).set('promotions', data);
-  }
+
 }

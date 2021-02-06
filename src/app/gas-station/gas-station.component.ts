@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {GasStationService} from '../core/gas-station/gas-station.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {getCurrentRegionOfUser} from '../core/utils';
 
 @Component({
   selector: 'app-gas-station',
@@ -28,7 +29,7 @@ export class GasStationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.gasStations$ = this.gasStationService.getAllByRegion('Aguas Claras');
+    this.gasStations$ = this.gasStationService.getAllByRegion(getCurrentRegionOfUser());
     this.formSelectPriceOrder = this.formBuilder.group({
       priceOrder: ['', Validators.required]
     });
