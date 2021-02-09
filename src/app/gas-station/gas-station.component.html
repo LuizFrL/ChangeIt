@@ -1,7 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <form class="container-fluid" [formGroup]="formSelectPriceOrder">
-      <div class="row col-12">
+    <form class="col-4" [formGroup]="formSelectPriceOrder">
         <mat-form-field appearance="fill">
           <mat-label>Ordenar por:</mat-label>
           <mat-select formControlName="priceOrder">
@@ -10,11 +9,13 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-      </div>
     </form>
   </div>
+    <div class="row">
+      <app-form-distance (changeWantedDistance)="onChangeWantedDistance($event)"></app-form-distance>
+    </div>
 </div>
 <div class="container-fluid mt-2 maxWidth"
-     *ngFor="let gasStation of gasStations$ | async | orderValuesList: actualOrder;">
+     *ngFor="let gasStation of gasStations$ | async | orderValuesList: actualOrder : actualDistance;">
   <app-gas-station-form-inf [gasStation]="gasStation"></app-gas-station-form-inf>
 </div>

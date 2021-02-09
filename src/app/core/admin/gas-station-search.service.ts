@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {API, apiKey} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 import {UserService} from '../user/user.service';
@@ -8,7 +8,6 @@ import {UserService} from '../user/user.service';
   providedIn: 'root'
 })
 export class GasStationSearchService {
-  private baseUrl = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?radius=1000&type=gas_station&key=AIzaSyAqeOfBwS7p5prTHGqfxsAYD7c2XfT_zLk';
   private currentUserCoords: string;
 
   constructor(

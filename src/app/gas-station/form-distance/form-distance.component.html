@@ -1,0 +1,9 @@
+<form [formGroup]="formDistanceRadius" style="width: 100%">
+  <mat-form-field>
+    <mat-label>Distancia de busca</mat-label>
+    <span matSuffix>km </span>
+    <input type="tel" min="1" matInput formControlName="distanceKm" [(ngModel)]="actualRequestDistanceKm"
+           (ngModelChange)="changeWantedDistance.emit(actualRequestDistanceKm)">
+    <mat-icon matPrefix>radar</mat-icon>
+  </mat-form-field>
+</form>
