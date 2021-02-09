@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {GasStationService} from '../core/gas-station/gas-station.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {getCurrentRegionOfUser} from '../core/utils';
+import {UserService} from '../core/user/user.service';
 
 @Component({
   selector: 'app-gas-station',
@@ -23,13 +23,20 @@ export class GasStationComponent implements OnInit {
     }
   ];
   actualOrder = 'Values.gasoline.MoneyDebit';
+
   constructor(
     private formBuilder: FormBuilder,
-    private gasStationService: GasStationService
-  ) { }
+    private gasStationService: GasStationService,
+    private userService: UserService
+  ) {
+  }
 
   ngOnInit(): void {
-    this.gasStations$ = this.gasStationService.getAllByRegion(getCurrentRegionOfUser());
+    this.userService.currentRegion$.subscribe(
+      region => {
+        this.gasStations$ = this.gasStationService.getAllByRegion(region);
+      }
+    );
     this.formSelectPriceOrder = this.formBuilder.group({
       priceOrder: ['', Validators.required]
     });

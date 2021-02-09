@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {GasStationService} from '../../../core/gas-station/gas-station.service';
 import {GasStationSearchService} from '../../../core/admin/gas-station-search.service';
 import {formatCoordsInRegion, getDistance} from '../../../core/utils';
+import {UserService} from '../../../core/user/user.service';
 
 @Component({
   selector: 'app-form-register-gas-station',
@@ -19,7 +20,8 @@ export class FormRegisterGasStationComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private gasStationService: GasStationService,
-    private searchGasStation: GasStationSearchService
+    private searchGasStation: GasStationSearchService,
+    private userService: UserService
   ) {
   }
 
@@ -28,7 +30,9 @@ export class FormRegisterGasStationComponent implements OnInit {
       gasStationNearby: ['', Validators.required],
       location: ['', Validators.required]
     });
-    this.getActualLocation();
+    this.userService.currentPosition$.subscribe( position => {
+      this.actualLocation = position;
+    });
     this.searchGasStation.getNearbyGasStations()
       .subscribe(value => {
       // @ts-ignore
@@ -50,21 +54,11 @@ export class FormRegisterGasStationComponent implements OnInit {
     this.formRegisterGasStation.reset();
   }
 
-  getActualLocation(): void {
-    navigator?.geolocation.getCurrentPosition(position => {
-        this.actualLocation = {
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-        };
-      },
-      error => {
-        alert(error.message);
-      }, {enableHighAccuracy: true});
-  }
-
   getDistanceGasStation(gasStation: any): string {
-    // @ts-ignore
-    return getDistance(window.currentUserLocation, this.getGasStationCoords(gasStation.geometry.location));
+    if (this.userService.currentPosition$.getValue()) {
+      return getDistance(this.userService.currentPosition$.getValue(), this.getGasStationCoords(gasStation.geometry.location));
+    }
+    return;
   }
 
   getGasStationCoords(gasStation): any {

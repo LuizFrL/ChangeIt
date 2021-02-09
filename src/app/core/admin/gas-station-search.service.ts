@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {API, apiKey} from '../../../environments/environment';
 import {Observable} from 'rxjs';
+import {UserService} from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +12,19 @@ export class GasStationSearchService {
   private currentUserCoords: string;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private userService: UserService
   ) {
   }
 
   getNearbyGasStations(): Observable<object> {
-    // @ts-ignore
-    this.currentUserCoords = String(window.currentUserLocation.latitude) + ', ' + String(window.currentUserLocation.longitude);
+    this.userService.currentPosition$.subscribe(position => {
+      this.currentUserCoords = String(position.latitude) + ', ' + String(position.longitude);
+    });
     const options = {
       params: new HttpParams()
         .set('location', this.currentUserCoords)
-        .set('radius', '500')
+        .set('radius', '600')
         .set('type', 'gas_station')
         .set('key', apiKey)
     };

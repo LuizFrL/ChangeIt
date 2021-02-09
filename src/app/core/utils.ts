@@ -34,8 +34,3 @@ export function formatCoordsInRegion(coords: any): string {
 
   return lat + '|' + lng;
 }
-
-export function getCurrentRegionOfUser(): string {
-  // @ts-ignore
-  return formatCoordsInRegion(window.currentUserLocation);
-}

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {getDistance} from '../../core/utils';
+import {UserService} from '../../core/user/user.service';
 
 
 @Component({
@@ -10,12 +11,17 @@ import {getDistance} from '../../core/utils';
 export class GasStationFormInfComponent implements OnInit {
   @Input() gasStation;
   distance: string;
-  constructor() {
+  constructor(
+    private userService: UserService
+  ) {
   }
 
   ngOnInit(): void {
-    // @ts-ignore
-    this.gasStation.coordinates.actualUserDistance = getDistance(window.currentUserLocation, this.gasStation.coordinates);
+    this.userService.currentPosition$.subscribe( position => {
+      if (position) {
+        this.gasStation.coordinates.actualUserDistance = getDistance(position, this.gasStation.coordinates);
+      }
+    });
   }
 
   redirectToMaps(latitude: number, longitude: number): void {

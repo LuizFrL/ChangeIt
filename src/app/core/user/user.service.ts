@@ -5,6 +5,7 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {Router} from '@angular/router';
+import {formatCoordsInRegion} from '../utils';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,8 @@ import {Router} from '@angular/router';
 export class UserService {
   user$: Observable<null>;
   isAdminUser$ = new BehaviorSubject(false);
+  currentPosition$ = new BehaviorSubject(null);
+  currentRegion$ = new BehaviorSubject(null);
 
   constructor(
     private angularAuth: AngularFireAuth,
@@ -35,12 +38,31 @@ export class UserService {
             // @ts-ignore
             this.isAdminUser$.next(user.uid in admins);
           },
-          error => {}
+          error => {
+          }
         );
       } else {
         this.isAdminUser$.next(false);
       }
     });
+    navigator.geolocation.watchPosition(
+      position => {
+        if (
+          position.coords.latitude !== this.currentPosition$.getValue()?.latitude &&
+          position.coords.longitude !== this.currentPosition$.getValue()?.longitude
+        ) {
+          this.currentPosition$.next(position.coords);
+          if (this.currentRegion$.getValue() !== formatCoordsInRegion(position.coords)) {
+            const region = formatCoordsInRegion(position.coords);
+            this.currentRegion$.next(region);
+          }
+        }
+      },
+      error => {
+        window.alert(error.message);
+      },
+      {enableHighAccuracy: true}
+    );
   }
 
   async googleSignin(): Promise<void> {
@@ -66,5 +88,4 @@ export class UserService {
     await this.angularAuth.signOut();
     await this.router.navigate(['']);
   }
-
 }
