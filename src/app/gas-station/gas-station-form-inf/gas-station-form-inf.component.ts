@@ -10,7 +10,7 @@ import {UserService} from '../../core/user/user.service';
 })
 export class GasStationFormInfComponent implements OnInit {
   @Input() gasStation;
-  distance: string;
+  @Input() distanceRadius: number;
   constructor(
     private userService: UserService
   ) {

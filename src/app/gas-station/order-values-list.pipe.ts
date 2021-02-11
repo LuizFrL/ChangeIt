@@ -12,12 +12,9 @@ export class OrderValuesListPipe implements PipeTransform {
   ) {
   }
 
-  transform(values: object[], filter: string, distance: number): object[] {
+  transform(values: object[], filter: string): object[] {
     if (filter.length && values) {
-      return values.filter( items => {
-        // @ts-ignore
-        return getDistance(this.userService.currentPosition$.getValue(), items.coordinates) < String(distance);
-      }).sort(sortBy(filter));
+      return values.sort(sortBy(filter));
     }
     return values;
   }

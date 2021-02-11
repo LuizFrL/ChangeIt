@@ -1,11 +1,13 @@
-<mat-card class="example-card" *ngIf="gasStation.Values">
+<mat-card class="example-card" *ngIf="
+gasStation.Values && gasStation.coordinates.actualUserDistance <= distanceRadius">
   <mat-card-header class="d-block">
     <div class="container-fluid">
       <div class="row">
         <mat-card-title class="title m-0">{{ gasStation.gasStationName }}</mat-card-title>
       </div>
       <div class="row">
-        <mat-card-subtitle>{{ gasStation.location }} | A {{ gasStation.coordinates.actualUserDistance }} km de você!</mat-card-subtitle>
+        <mat-card-subtitle>{{ gasStation.location }} | A {{ gasStation.coordinates.actualUserDistance }} km de você!
+        </mat-card-subtitle>
       </div>
     </div>
   </mat-card-header>

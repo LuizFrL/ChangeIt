@@ -11,7 +11,7 @@ import {UserService} from '../core/user/user.service';
 })
 export class GasStationComponent implements OnInit {
   gasStations$: Observable<any>;
-  actualDistance;
+  actualDistance: number;
   formSelectPriceOrder: FormGroup;
   priceOrdersAvailable: object[] = [
     {
@@ -49,7 +49,7 @@ export class GasStationComponent implements OnInit {
 
   onChangeWantedDistance(wantedDistanceKm: number): void {
     if (wantedDistanceKm) {
-      this.actualDistance = wantedDistanceKm;
+      this.actualDistance = Number(wantedDistanceKm);
     } else {
       this.actualDistance = 0;
     }
