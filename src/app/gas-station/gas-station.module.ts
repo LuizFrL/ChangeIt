@@ -14,6 +14,7 @@ import {FormDistanceComponent} from './form-distance/form-distance.component';
 import {MatInputModule} from '@angular/material/input';
 import {WithoutGasStationForRegionComponent} from './without-gas-station-for-region/without-gas-station-for-region.component';
 import {LookingForGasStationComponent} from './looking-for-gas-station/looking-for-gas-station.component';
+import {LottieModule} from 'ngx-lottie';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {LookingForGasStationComponent} from './looking-for-gas-station/looking-f
     ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
+    LottieModule,
   ]
 })
 export class GasStationModule {
