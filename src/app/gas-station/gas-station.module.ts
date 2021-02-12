@@ -15,6 +15,8 @@ import {MatInputModule} from '@angular/material/input';
 import {WithoutGasStationForRegionComponent} from './without-gas-station-for-region/without-gas-station-for-region.component';
 import {LookingForGasStationComponent} from './looking-for-gas-station/looking-for-gas-station.component';
 import {LottieModule} from 'ngx-lottie';
+import {AnimationLottieComponent} from './animation-lottie/animation-lottie.component';
+
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import {LottieModule} from 'ngx-lottie';
     OrderValuesListPipe,
     FormDistanceComponent,
     WithoutGasStationForRegionComponent,
-    LookingForGasStationComponent
+    LookingForGasStationComponent,
+    AnimationLottieComponent
   ],
   imports: [
     CommonModule,
