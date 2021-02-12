@@ -1,21 +1,27 @@
 <div class="container-fluid">
+  <p>Ordenar por</p>
   <div class="row">
-    <form class="col-4" [formGroup]="formSelectPriceOrder">
-        <mat-form-field appearance="fill">
-          <mat-label>Ordenar por:</mat-label>
-          <mat-select formControlName="priceOrder">
-            <mat-option *ngFor="let priceOrder of priceOrdersAvailable" [value]="priceOrder.pathOrder">
-              {{ priceOrder.displayName }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-    </form>
+    <button mat-raised-button [color]="creditChecked ? 'primary': null"
+            (click)="clickCredit()">
+      Credito
+    </button>
+    <button mat-raised-button [color]="moneyDebitChecked ? 'primary': null"
+            (click)="clickDebit()">
+      Débito
+    </button>
   </div>
-    <div class="row">
-      <app-form-distance (changeWantedDistance)="onChangeWantedDistance($event)"></app-form-distance>
-    </div>
+  <div class="row pt-3">
+    <app-form-distance (changeWantedDistance)="onChangeWantedDistance($event)"></app-form-distance>
+  </div>
 </div>
 <div class="container-fluid mt-2 maxWidth"
      *ngFor="let gasStation of gasStations$ | async | orderValuesList: actualOrder">
   <app-gas-station-form-inf [gasStation]="gasStation" [distanceRadius]="actualDistance"></app-gas-station-form-inf>
+</div>
+<div *ngIf="lookingForGasStation">
+  <app-looking-for-gas-station></app-looking-for-gas-station>
+</div>
+
+<div *ngIf="!lookingForGasStation && !hasGasStation">
+  <app-without-gas-station-for-region></app-without-gas-station-for-region>
 </div>

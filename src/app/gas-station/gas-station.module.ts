@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+
 import {GasStationRoutingModule} from './gas-station.routing.module';
 import {GasStationFormInfComponent} from './gas-station-form-inf/gas-station-form-inf.component';
-import { GasStationComponent } from './gas-station.component';
+import {GasStationComponent} from './gas-station.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {OrderValuesListPipe} from './order-values-list.pipe';
@@ -11,10 +12,19 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {FormDistanceComponent} from './form-distance/form-distance.component';
 import {MatInputModule} from '@angular/material/input';
+import {WithoutGasStationForRegionComponent} from './without-gas-station-for-region/without-gas-station-for-region.component';
+import {LookingForGasStationComponent} from './looking-for-gas-station/looking-for-gas-station.component';
 
 
 @NgModule({
-  declarations: [GasStationFormInfComponent, GasStationComponent, OrderValuesListPipe, FormDistanceComponent],
+  declarations: [
+    GasStationFormInfComponent,
+    GasStationComponent,
+    OrderValuesListPipe,
+    FormDistanceComponent,
+    WithoutGasStationForRegionComponent,
+    LookingForGasStationComponent
+  ],
   imports: [
     CommonModule,
     MatCardModule,
@@ -27,4 +37,5 @@ import {MatInputModule} from '@angular/material/input';
     MatInputModule,
   ]
 })
-export class GasStationModule { }
+export class GasStationModule {
+}
