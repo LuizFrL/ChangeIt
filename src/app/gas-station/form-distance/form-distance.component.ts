@@ -1,6 +1,5 @@
 import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-form-distance',

@@ -1,15 +1,19 @@
 <form [formGroup]="formDistanceRadius" class="container-fluid">
   <div class="row">
-    <mat-form-field class="size">
-      <mat-label>Busca</mat-label>
+    <mat-form-field class="col-6">
+      <mat-label>Distancia de busca</mat-label>
       <span matSuffix>km</span>
       <input type="tel" maxlength="4" matInput formControlName="distanceKm" [(ngModel)]="actualRequestDistanceKm"
              (ngModelChange)="changeWantedDistance.emit(actualRequestDistanceKm)">
       <mat-icon matPrefix>radar</mat-icon>
     </mat-form-field>
-    <div class="align pl-2">
-      <button mat-raised-button (click)="actualRequestDistanceKm = actualRequestDistanceKm + 1">+ 1km</button>
-      <button mat-raised-button (click)="actualRequestDistanceKm = actualRequestDistanceKm - 1">- 1km</button>
+    <div class="m-auto">
+      <button mat-raised-button class="col-3" (click)="actualRequestDistanceKm = actualRequestDistanceKm + 1">+ 1km
+      </button>
+    </div>
+    <div class="m-auto">
+      <button mat-raised-button class="col-3" (click)="actualRequestDistanceKm = actualRequestDistanceKm - 1">- 1km
+      </button>
     </div>
   </div>
 </form>

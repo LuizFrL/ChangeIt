@@ -1,14 +1,14 @@
 <div class="container-fluid">
-  <p>Ordenar por</p>
+  <div>Ordenar por:</div>
   <div class="row">
-    <button mat-raised-button [color]="creditChecked ? 'primary': null"
-            (click)="clickCredit()">
-      Credito
-    </button>
-    <button mat-raised-button [color]="moneyDebitChecked ? 'primary': null"
-            (click)="clickDebit()">
-      Débito
-    </button>
+      <button class="col-4 m-2 col-lg-2" mat-raised-button [color]="creditChecked ? 'primary': null"
+              (click)="clickCredit()">
+        Credito
+      </button>
+      <button class="col-4 m-2 col-lg-2" mat-raised-button [color]="moneyDebitChecked ? 'primary': null"
+              (click)="clickDebit()">
+        Débito
+      </button>
   </div>
   <div class="row pt-3">
     <app-form-distance (changeWantedDistance)="onChangeWantedDistance($event)"></app-form-distance>
