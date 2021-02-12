@@ -1,11 +1,11 @@
 <div class="container-fluid">
   <div>Ordenar por:</div>
   <div class="row">
-      <button class="col-4 m-2 col-lg-2" mat-raised-button [color]="creditChecked ? 'primary': null"
+      <button class="col-4 m-2 col-lg-2" mat-raised-button [class.color-button]="creditChecked"
               (click)="clickCredit()">
         Credito
       </button>
-      <button class="col-4 m-2 col-lg-2" mat-raised-button [color]="moneyDebitChecked ? 'primary': null"
+      <button class="col-4 m-2 col-lg-2" mat-raised-button [class.color-button]="moneyDebitChecked"
               (click)="clickDebit()">
         Débito
       </button>

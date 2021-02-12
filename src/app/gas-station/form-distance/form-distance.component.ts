@@ -14,7 +14,8 @@ export class FormDistanceComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.formDistanceRadius = this.formBuilder.group({
@@ -22,4 +23,15 @@ export class FormDistanceComponent implements OnInit {
     });
   }
 
+  add(amount: number): void {
+    if (this.actualRequestDistanceKm < 1000) {
+      this.actualRequestDistanceKm = Number(this.actualRequestDistanceKm) + amount;
+    }
+  }
+
+  remove(amount: number): void {
+    if (this.actualRequestDistanceKm > 0) {
+      this.actualRequestDistanceKm = Number(this.actualRequestDistanceKm) - amount;
+    }
+  }
 }

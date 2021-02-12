@@ -8,11 +8,11 @@
       <mat-icon matPrefix>radar</mat-icon>
     </mat-form-field>
     <div class="m-auto">
-      <button mat-raised-button class="col-3" (click)="actualRequestDistanceKm = actualRequestDistanceKm + 1">+ 1km
+      <button mat-raised-button class="col-3" (click)="add(1)">+ 1km
       </button>
     </div>
     <div class="m-auto">
-      <button mat-raised-button class="col-3" (click)="actualRequestDistanceKm = actualRequestDistanceKm - 1">- 1km
+      <button mat-raised-button class="col-3" (click)="remove(1)">- 1km
       </button>
     </div>
   </div>
