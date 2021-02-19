@@ -44,7 +44,11 @@ export class GasStationService {
 
   setGasStationsValues(id: string, region: string, data): void {
     this.db.list(`gasStations/${region}/${id}`).set('Values', data);
-    this.db.list(`gasStations/${region}/${id}/Values`).set('date', Date.now());
+    this.updateDateOfGasStation(region, id, Date.now());
+  }
+
+  updateDateOfGasStation(region: string, id: string, date: number): void {
+    this.db.list(`gasStations/${region}/${id}/Values`).set('date', date);
   }
 
 }

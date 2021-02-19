@@ -10,6 +10,7 @@ import {OrderValuesListPipe} from './order-values-list.pipe';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu';
 import {FormDistanceComponent} from './form-distance/form-distance.component';
 import {MatInputModule} from '@angular/material/input';
 import {WithoutGasStationForRegionComponent} from './without-gas-station-for-region/without-gas-station-for-region.component';
@@ -40,6 +41,7 @@ import {AnimationLottieComponent} from './animation-lottie/animation-lottie.comp
     MatButtonModule,
     MatInputModule,
     LottieModule,
+    MatMenuModule
   ]
 })
 export class GasStationModule {

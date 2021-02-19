@@ -2,8 +2,23 @@
 gasStation.Values && gasStation.coordinates.actualUserDistance <= distanceRadius">
   <mat-card-header class="d-block">
     <div class="container-fluid">
-      <div class="row">
+      <div class="row align-items-center">
         <mat-card-title class="title m-0">{{ gasStation.gasStationName }}</mat-card-title>
+        <div class="ml-auto" *ngIf="isAdminUser | async">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item (click)="updateDateOfGasStation()">
+              <mat-icon>done</mat-icon>
+              <span>Atualizar Posto</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>edit</mat-icon>
+              <span>Alterar preços</span>
+            </button>
+          </mat-menu>
+        </div>
       </div>
       <div class="row">
         <mat-card-subtitle>{{ gasStation.location }} | A {{ gasStation.coordinates.actualUserDistance }} km de você!

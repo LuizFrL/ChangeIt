@@ -36,7 +36,7 @@ export class GasStationComponent implements OnInit {
   ngOnInit(): void {
     this.userService.currentRegion$.subscribe(
       region => {
-        this.gasStations$ = this.gasStationService.getAllByRegion(region).pipe(
+        this.gasStations$ = this.gasStationService.getAllByRegion('-158|-480').pipe(
           map(gasStations => {
               this.lookingForGasStation = false;
               this.hasGasStation = !!gasStations.length;

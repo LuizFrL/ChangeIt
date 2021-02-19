@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {getDistance} from '../../core/utils';
 import {UserService} from '../../core/user/user.service';
+import {Observable} from 'rxjs';
+import {GasStationService} from '../../core/gas-station/gas-station.service';
 
 
 @Component({
@@ -11,12 +13,16 @@ import {UserService} from '../../core/user/user.service';
 export class GasStationFormInfComponent implements OnInit {
   @Input() gasStation;
   @Input() distanceRadius: number;
+
+  isAdminUser: Observable<boolean>;
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private gasStationService: GasStationService
   ) {
   }
 
   ngOnInit(): void {
+    this.isAdminUser = this.userService.isAdminUser$;
     this.userService.currentPosition$.subscribe( position => {
       if (position) {
         this.gasStation.coordinates.actualUserDistance = getDistance(position, this.gasStation.coordinates);
@@ -40,5 +46,9 @@ export class GasStationFormInfComponent implements OnInit {
       url: `https://www.google.com.br/maps/search/${latitude},+${longitude}`
     })
       .catch(error => console.log('Error sharing: ' + error));
+  }
+
+  updateDateOfGasStation(): void {
+    this.gasStationService.updateDateOfGasStation(this.userService.currentRegion$.getValue(), this.gasStation.key, Date.now());
   }
 }
