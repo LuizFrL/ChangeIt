@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {GasStationSearchService} from '../../core/admin/gas-station-search.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-form-register',
@@ -10,9 +10,16 @@ export class FormRegisterComponent implements OnInit {
   gasStationRegister = false;
   gasAlterValues = false;
 
-  constructor() { }
+  constructor(
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe( params => {
+      if (params.gasStation) {
+        this.gasAlterValues = true;
+      }
+    });
   }
 
 }

@@ -3,6 +3,7 @@ import {getDistance} from '../../core/utils';
 import {UserService} from '../../core/user/user.service';
 import {Observable} from 'rxjs';
 import {GasStationService} from '../../core/gas-station/gas-station.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class GasStationFormInfComponent implements OnInit {
   isAdminUser: Observable<boolean>;
   constructor(
     private userService: UserService,
-    private gasStationService: GasStationService
+    private gasStationService: GasStationService,
+    private router: Router
   ) {
   }
 
@@ -50,5 +52,9 @@ export class GasStationFormInfComponent implements OnInit {
 
   updateDateOfGasStation(): void {
     this.gasStationService.updateDateOfGasStation(this.userService.currentRegion$.getValue(), this.gasStation.key, Date.now());
+  }
+
+  redirectToAdminWithGasStation(): void {
+    this.router.navigate(['admin'], { queryParams: { gasStation: this.gasStation.key } });
   }
 }

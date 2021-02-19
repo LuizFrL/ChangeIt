@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {GasStationService} from '../../../core/gas-station/gas-station.service';
 import {GasStation} from '../../../core/gas-station/gas-station';
 import {UserService} from '../../../core/user/user.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-form-alter-gas-values',
@@ -18,7 +19,8 @@ export class FormAlterGasValuesComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private gasStationService: GasStationService,
-    private userService: UserService
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute
   ) {
   }
 
@@ -31,6 +33,13 @@ export class FormAlterGasValuesComponent implements OnInit {
       Credit: [null, Validators.required],
       MoneyDebit: [null, Validators.required],
       promotions: ['']
+    });
+
+    this.activatedRoute.queryParams.subscribe( params => {
+      if (params.gasStation) {
+        this.formAlterGasStationValues.controls.gasStation.setValue(params.gasStation);
+        this.onSelectGasStation(params.gasStation);
+      }
     });
   }
 
@@ -47,9 +56,8 @@ export class FormAlterGasValuesComponent implements OnInit {
     this.gasolineValues = null;
   }
 
-  onSelectGasStation(): void {
-    const value = this.formAlterGasStationValues.value;
-    this.gasStationService.getGasStationsValues(this.userService.currentRegion$.getValue(), value.gasStation).subscribe(
+  onSelectGasStation(gasStation: string): void {
+    this.gasStationService.getGasStationsValues(this.userService.currentRegion$.getValue(), gasStation).subscribe(
       gasolineValues => {
         this.gasolineValues = gasolineValues[0];
         this.formAlterGasStationValues.controls.Credit.setValue(

@@ -5,7 +5,7 @@
       <mat-label>Posto</mat-label>
       <mat-select formControlName="gasStation">
         <mat-option *ngFor="let gasStation of gasStations$ | async" [value]="gasStation.key"
-                    (click)="onSelectGasStation()">
+                    (click)="onSelectGasStation(gasStation.key)">
           {{ gasStation.gasStationName }} | {{ gasStation.location }}
         </mat-option>
       </mat-select>
