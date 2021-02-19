@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {SwUpdate} from '@angular/service-worker';
 
 
 @Component({
@@ -7,6 +8,19 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor() {}
+  constructor(
+    private update: SwUpdate
+  ) {
+    this.updateClient();
+  }
 
+  updateClient(): void {
+    if (!this.update.isEnabled) {
+      console.log('not enabled');
+      return;
+    }
+    this.update.available.subscribe(() => {
+      this.update.activateUpdate().then(() => location.reload());
+    });
+  }
 }

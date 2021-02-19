@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {AnimationOptions} from 'ngx-lottie';
 
 @Component({
   selector: 'app-looking-for-gas-station',
@@ -6,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./looking-for-gas-station.component.css']
 })
 export class LookingForGasStationComponent implements OnInit {
-  lottieConfig: object;
+  lottieConfig: AnimationOptions;
 
   constructor() { }
 

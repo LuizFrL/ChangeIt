@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod & firebase deploy"
+    "deploy": "ng build --prod & firebase deploy",
+    "serve": "http-server dist/FuelCompanyHash"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +24,7 @@
     "@angular/platform-browser": "~11.0.1",
     "@angular/platform-browser-dynamic": "~11.0.1",
     "@angular/router": "~11.0.1",
+    "@angular/service-worker": "~11.0.1",
     "bootstrap": "^4.5.3",
     "firebase": "^8.1.1",
     "lottie-web": "^5.7.6",
