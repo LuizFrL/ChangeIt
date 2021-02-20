@@ -1,0 +1,17 @@
+<div>
+  <app-animation-lottie [lottieConfig]="lottieConfig"></app-animation-lottie>
+</div>
+<h1 mat-dialog-title>Avalie nossa aplicação!</h1>
+<div mat-dialog-content>Ajude a manter nosso aplicativo cada vez melhor, sua opinião conta muito para a melhoria do
+  serviço!
+</div>
+<div class="form-group">
+  <label for="feedback">Deixei sua opinião aqui:</label>
+  <textarea class="form-control" id="feedback" rows="4" #feedback></textarea>
+</div>
+<div>Avalie a nossa aplicação *</div>
+<ngb-rating [max]="5" [(rate)]="rating"></ngb-rating>
+<div mat-dialog-actions>
+  <button mat-button color="primary" [disabled]="!rating" (click)="sendFeedback(feedback.value)">Enviar</button>
+  <button mat-button color="warn" (click)="close()">Fechar</button>
+</div>

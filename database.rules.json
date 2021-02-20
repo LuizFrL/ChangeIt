@@ -13,6 +13,10 @@
     "gasStations": {
       ".read": "true",
       ".write": "data.parent().child('/admin/' + auth.uid).val() === true"
+    },
+    "feedback": {
+      ".read": "data.parent().child('/admin/' + auth.uid).val() === true",
+      ".write": true
     }
   }
 }

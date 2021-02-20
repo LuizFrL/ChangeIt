@@ -13,11 +13,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {PwaService} from './core/pwa/pwa.service';
-import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
 import {PwaPromptComponent} from './home/pwa-prompt/pwa-prompt.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {FeedbackComponent} from './feedback/feedback/feedback.component';
+import {GasStationModule} from './gas-station/gas-station.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export function playerFactory(): LottiePlayer {
   return player;
@@ -28,7 +31,8 @@ const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
 @NgModule({
   declarations: [
     AppComponent,
-    PwaPromptComponent
+    PwaPromptComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,8 @@ const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
+    GasStationModule,
+    NgbModule,
   ],
 
   providers: [
@@ -62,7 +68,8 @@ const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
     }
   ],
   entryComponents: [
-    PwaPromptComponent
+    PwaPromptComponent,
+    FeedbackComponent
   ],
   bootstrap: [AppComponent]
 })

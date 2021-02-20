@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { mainTitle } from '../../core/utils';
 import {UserService} from '../../core/user/user.service';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+import {FeedbackComponent} from '../../feedback/feedback/feedback.component';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +17,8 @@ export class HeaderComponent implements OnInit {
   menuOpen = false;
   constructor(
     private userService: UserService,
-    public router: Router
+    public router: Router,
+    public dialog: MatDialog
   ) {
     userService.user$.subscribe(user => this.user = user);
   }
@@ -34,5 +37,12 @@ export class HeaderComponent implements OnInit {
 
   toggleMenu(): void{
     this.menuOpen = !this.menuOpen;
+  }
+
+  openDialog() {
+    this.dialog.open(FeedbackComponent, {
+      height: '700px',
+      width: '400px',
+    });
   }
 }

@@ -42,7 +42,8 @@ import {AnimationLottieComponent} from './animation-lottie/animation-lottie.comp
     MatInputModule,
     LottieModule,
     MatMenuModule
-  ]
+  ],
+  exports: [ AnimationLottieComponent ]
 })
 export class GasStationModule {
 }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {GasStationService} from '../core/gas-station/gas-station.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
 import {UserService} from '../core/user/user.service';
 import {map} from 'rxjs/operators';
 
@@ -58,7 +58,6 @@ export class GasStationComponent implements OnInit {
   }
 
   clickDebit(): void {
-    // actualOrder = priceOrdersAvailable.moneyDebit; moneyDebitChecked = !moneyDebitChecked; creditChecked = !creditChecked
     // @ts-ignore
     this.actualOrder = this.priceOrdersAvailable.moneyDebit;
     this.moneyDebitChecked = true;
@@ -67,7 +66,6 @@ export class GasStationComponent implements OnInit {
     }
   }
   clickCredit(): void {
-    // actualOrder = priceOrdersAvailable.moneyDebit; moneyDebitChecked = !moneyDebitChecked; creditChecked = !creditChecked
     // @ts-ignore
     this.actualOrder = this.priceOrdersAvailable.credit;
     this.creditChecked = true;
