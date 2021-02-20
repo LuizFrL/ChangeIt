@@ -3,13 +3,14 @@
     <img src="https://res.cloudinary.com/knowgas/image/upload/c_scale,h_50,w_50/v1613793231/Know%20Gas/logo_sem_fundo_tnj2dv.svg" width="50" height="50" class="pl-1 d-inline-block align-items-center" alt="">
     {{ mainTitle }}
   </a>
+  <a (click)="openDialog()" class="col-3 col-lg-6"><b>Deixe seu feedback</b></a>
+
   <div class="menu-btn" [ngClass]="{
     'open': menuOpen,
     'close': !menuOpen
   }" (click)="toggleMenu()">
     <div class="menu-btn__burger"></div>
   </div>
-  <button class="btn-info" (click)="openDialog()">Open dialog</button>
 </nav>
 
 <div class="list"
