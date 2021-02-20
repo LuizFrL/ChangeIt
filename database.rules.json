@@ -14,7 +14,7 @@
       ".read": "true",
       ".write": "data.parent().child('/admin/' + auth.uid).val() === true"
     },
-    "feedback": {
+    "feedbacks": {
       ".read": "data.parent().child('/admin/' + auth.uid).val() === true",
       ".write": true
     }

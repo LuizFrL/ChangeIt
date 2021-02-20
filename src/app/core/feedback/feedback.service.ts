@@ -17,7 +17,7 @@ export class FeedbackService {
   ) {
   }
 
-  addFeedback(feedbackInf: FeedBack){
-    return this.db.list('feedback').push(feedbackInf);
+  addFeedback(feedbackInf: FeedBack): any {
+    return this.db.list('feedbacks').push(feedbackInf);
   }
 }
