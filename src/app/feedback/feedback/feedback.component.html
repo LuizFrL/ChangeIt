@@ -6,10 +6,10 @@
   serviço!
 </div>
 <div class="form-group">
-  <label for="feedback">Deixei sua opinião aqui:</label>
-  <textarea class="form-control" id="feedback" rows="4" #feedback></textarea>
+  <textarea class="form-control" rows="4" #feedback maxlength="150" placeholder="Deixe sua sugestão para melhorias bem aqui..."></textarea>
+  <mat-hint align="end">{{feedback.value.length + 1}} / 150</mat-hint>
 </div>
-<div>Avalie a nossa aplicação *</div>
+<div>Avalie a nossa aplicação: *</div>
 <ngb-rating [max]="5" [(rate)]="rating"></ngb-rating>
 <div mat-dialog-actions>
   <button mat-button color="primary" [disabled]="!rating" (click)="sendFeedback(feedback.value)">Enviar</button>

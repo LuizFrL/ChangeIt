@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { mainTitle } from '../../core/utils';
 import {UserService} from '../../core/user/user.service';
 import {Router} from '@angular/router';
@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   isAdminUser$;
   user;
   menuOpen = false;
+  @Input() drawer;
   constructor(
     private userService: UserService,
     public router: Router,
