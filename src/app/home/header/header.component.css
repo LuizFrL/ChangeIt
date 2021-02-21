@@ -3,38 +3,12 @@
   position: center;
 }
 
-a {
-  color: #000000;
-}
-
-ul {
-  list-style-type: none;
-}
-li {
-  padding-top: 5px;
-}
-.list {
-  position: absolute;
-  right: 10px;
-  top: 85px;
-  z-index: 1;
-}
-.visible {
-  display: none;
-}
-.button {
-  background-color: rgba(255, 255, 150, 0.29);
-  border-radius: 10px;
-  height: 37px;
-  width: 85px;
-  border: solid #000000;
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   background: #272727;
   display: flex;
@@ -42,6 +16,7 @@ body {
   align-items: center;
   min-height: 100vh;
 }
+
 .menu-btn {
   position: relative;
   display: flex;
@@ -53,6 +28,7 @@ body {
   transition: all .5s ease-in-out;
   /* border: 3px solid #fff; */
 }
+
 .menu-btn__burger {
   width: 50px;
   height: 6px;
@@ -61,6 +37,7 @@ body {
   box-shadow: 0 2px 5px rgba(255,101,47,.2);
   transition: all .5s ease-in-out;
 }
+
 .menu-btn__burger::before,
 .menu-btn__burger::after {
   content: '';
@@ -72,9 +49,11 @@ body {
   box-shadow: 0 2px 5px rgb(250, 229, 142);
   transition: all .5s ease-in-out;
 }
+
 .menu-btn__burger::before {
   transform: translateY(-16px);
 }
+
 .menu-btn__burger::after {
   transform: translateY(16px);
 }
@@ -84,11 +63,11 @@ body {
   background: transparent;
   box-shadow: none;
 }
+
 .menu-btn.open .menu-btn__burger::before {
   transform: rotate(45deg) translate(35px, -35px);
 }
+
 .menu-btn.open .menu-btn__burger::after {
   transform: rotate(-45deg) translate(35px, 35px);
 }
-
-/* List Animation */

@@ -1,6 +1,6 @@
 <mat-drawer-container hasBackdrop="false">
 <app-header [drawer]="drawer"></app-header>
-<mat-drawer #drawer mode="push" position="end">
+<mat-drawer #drawer mode="push" position="end" style="width: 60%; max-height: 100vh; position: fixed; top: 0; right: 0;">
   <app-sidebar></app-sidebar>
 </mat-drawer>
 <router-outlet></router-outlet>

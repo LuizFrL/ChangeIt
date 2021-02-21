@@ -23,7 +23,7 @@ import {GasStationModule} from './gas-station/gas-station.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import {SidebarComponent} from './sidebar/sidebar.component';
+import {SidebarModule} from './sidebar/sidebar.module';
 
 export function playerFactory(): LottiePlayer {
   return player;
@@ -35,8 +35,7 @@ const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
   declarations: [
     AppComponent,
     PwaPromptComponent,
-    FeedbackComponent,
-    SidebarComponent
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +56,7 @@ const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
     NgbModule,
     MatFormFieldModule,
     MatSidenavModule,
+    SidebarModule
   ],
 
   providers: [

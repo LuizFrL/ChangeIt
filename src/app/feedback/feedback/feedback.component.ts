@@ -19,7 +19,7 @@ export class FeedbackComponent implements OnInit {
 
   ngOnInit(): void {
     this.lottieConfig = {
-      path: 'https://assets10.lottiefiles.com/private_files/lf30_ltuqrtmn.json',
+      path: 'https://res.cloudinary.com/knowgas/raw/upload/v1613933738/Know%20Gas/Animations/feedback_j5tdwf.json',
       renderer: 'canvas',
       autoplay: true,
       loop: true

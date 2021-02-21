@@ -1,1 +1,56 @@
-<p>sidebar works!</p>
+<ng-template #noUser>
+  <div class="container-fluid">
+    <app-animation-lottie [lottieConfig]="lottieConfig"></app-animation-lottie>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <button mat-stroked-button color="primary" class="login-button" (click)="SignIn()">SignIn</button>
+    </div>
+  </div>
+</ng-template>
+<div *ngIf="userService.user$ | async as user; else noUser">
+  <div class="container-fluid">
+    <img [src]="user.photoURL" class="img-thumbnail rounded-circle mx-auto d-block mt-2">
+    <div class="text-center mt-1">
+      Bem vindo, {{ user.displayName }}!
+    </div>
+    <hr>
+    <mat-selection-list [multiple]="false">
+      <mat-list-option (click)="openFeedback()">
+        <div class="row">
+          <mat-icon>feedback</mat-icon>
+          <div class="ml-auto">Feedback</div>
+        </div>
+      </mat-list-option>
+      <mat-list-option *ngIf="this.router.url !== '/'" [routerLink]="['']">
+        <div class="row">
+          <mat-icon>home</mat-icon>
+          <div class="ml-auto">Home</div>
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
+    <hr>
+    <div *ngIf="userService.isAdminUser$ | async">
+      <mat-selection-list [multiple]="false">
+        <mat-list-option [routerLink]="['admin']">
+          <div class="row">
+            <mat-icon>admin_panel_settings</mat-icon>
+            <div class="ml-auto">Admin page</div>
+          </div>
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="final-options">
+      <mat-selection-list [multiple]="false">
+        <mat-list-option (click)="logOut()">
+          <div class="row">
+            <mat-icon>logout</mat-icon>
+            <div class="ml-auto">LogOut</div>
+          </div>
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+  </div>
+</div>
