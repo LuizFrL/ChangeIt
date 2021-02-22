@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../core/user/user.service';
 import {FeedbackComponent} from '../feedback/feedback/feedback.component';
 import {MatDialog} from '@angular/material/dialog';
@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
   lottieConfig: object;
-
+  @Input() drawer;
   constructor(
     public userService: UserService,
     public dialog: MatDialog,

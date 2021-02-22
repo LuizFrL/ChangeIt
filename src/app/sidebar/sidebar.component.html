@@ -20,7 +20,7 @@
           <mat-icon>feedback</mat-icon>
           <div class="ml-auto">Feedback</div>
       </mat-list-item>
-      <mat-list-item *ngIf="this.router.url !== '/'" [routerLink]="['']">
+      <mat-list-item *ngIf="this.router.url !== '/'" [routerLink]="['']" (click)="drawer.toggle()">
           <mat-icon>home</mat-icon>
           <div class="ml-auto">Home</div>
       </mat-list-item>
@@ -29,7 +29,7 @@
     <div *ngIf="userService.isAdminUser$ | async">
       <mat-hint>Opções de Admin</mat-hint>
       <mat-list>
-        <mat-list-item [routerLink]="['admin']" *ngIf="this.router.url !== '/admin'">
+        <mat-list-item [routerLink]="['admin']" *ngIf="this.router.url !== '/admin'" (click)="drawer.toggle()">
           <mat-icon>admin_panel_settings</mat-icon>
           <div class="ml-auto">Admin page</div>
         </mat-list-item>
