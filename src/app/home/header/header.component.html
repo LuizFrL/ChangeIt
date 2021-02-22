@@ -4,9 +4,9 @@
     {{ mainTitle }}
   </a>
   <div class="menu-btn" [ngClass]="{
-    'open': menuOpen,
-    'close': !menuOpen
-  }" (click)="toggleMenu(); drawer.toggle()">
+    'open': headerService.menuOpen | async,
+    'close': !headerService.menuOpen | async
+  }" (click)="toggleMenu()">
     <div class="menu-btn__burger"></div>
   </div>
 </nav>

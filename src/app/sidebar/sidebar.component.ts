@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UserService} from '../core/user/user.service';
 import {FeedbackComponent} from '../feedback/feedback/feedback.component';
 import {MatDialog} from '@angular/material/dialog';
 import {Router} from '@angular/router';
+import {HeaderService} from '../core/header/header.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,8 +16,10 @@ export class SidebarComponent implements OnInit {
   constructor(
     public userService: UserService,
     public dialog: MatDialog,
-    public router: Router
-  ) { }
+    public router: Router,
+    private headerService: HeaderService
+  ) {
+  }
 
   ngOnInit(): void {
     this.lottieConfig = {
@@ -40,5 +43,10 @@ export class SidebarComponent implements OnInit {
 
   SignIn(): void {
     this.userService.googleSignin();
+  }
+
+  closeDrawer(): void {
+    this.headerService.changeMenu(false);
+    this.drawer.close();
   }
 }

@@ -4,6 +4,8 @@ import {UserService} from '../../core/user/user.service';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {FeedbackComponent} from '../../feedback/feedback/feedback.component';
+import {MatDrawer} from '@angular/material/sidenav';
+import {HeaderService} from '../../core/header/header.service';
 
 @Component({
   selector: 'app-header',
@@ -13,10 +15,10 @@ import {FeedbackComponent} from '../../feedback/feedback/feedback.component';
 export class HeaderComponent implements OnInit {
   mainTitle = mainTitle;
   user;
-  menuOpen = false;
   @Input() drawer;
 
   constructor(
+    public headerService: HeaderService
   ) {
   }
 
@@ -25,6 +27,7 @@ export class HeaderComponent implements OnInit {
 
 
   toggleMenu(): void {
-    this.menuOpen = !this.menuOpen;
+    this.headerService.changeMenu(!this.drawer.opened);
+    this.drawer.toggle();
   }
 }
