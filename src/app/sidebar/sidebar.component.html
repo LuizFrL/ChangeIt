@@ -15,42 +15,35 @@
       Bem vindo, {{ user.displayName }}!
     </div>
     <hr>
-    <mat-selection-list [multiple]="false">
-      <mat-list-option (click)="openFeedback()">
-        <div class="row">
+    <mat-list>
+      <mat-list-item (click)="openFeedback()">
           <mat-icon>feedback</mat-icon>
           <div class="ml-auto">Feedback</div>
-        </div>
-      </mat-list-option>
-      <mat-list-option *ngIf="this.router.url !== '/'" [routerLink]="['']">
-        <div class="row">
+      </mat-list-item>
+      <mat-list-item *ngIf="this.router.url !== '/'" [routerLink]="['']">
           <mat-icon>home</mat-icon>
           <div class="ml-auto">Home</div>
-        </div>
-      </mat-list-option>
-    </mat-selection-list>
+      </mat-list-item>
+    </mat-list>
     <hr>
     <div *ngIf="userService.isAdminUser$ | async">
-      <mat-selection-list [multiple]="false">
-        <mat-list-option [routerLink]="['admin']">
-          <div class="row">
-            <mat-icon>admin_panel_settings</mat-icon>
-            <div class="ml-auto">Admin page</div>
-          </div>
-        </mat-list-option>
-      </mat-selection-list>
+      <mat-hint>Opções de Admin</mat-hint>
+      <mat-list>
+        <mat-list-item [routerLink]="['admin']" *ngIf="this.router.url !== '/admin'">
+          <mat-icon>admin_panel_settings</mat-icon>
+          <div class="ml-auto">Admin page</div>
+        </mat-list-item>
+      </mat-list>
     </div>
   </div>
   <div class="container-fluid">
     <div class="final-options">
-      <mat-selection-list [multiple]="false">
-        <mat-list-option (click)="logOut()">
-          <div class="row">
+      <mat-list>
+        <mat-list-item (click)="logOut()">
             <mat-icon>logout</mat-icon>
             <div class="ml-auto">LogOut</div>
-          </div>
-        </mat-list-option>
-      </mat-selection-list>
+        </mat-list-item>
+      </mat-list>
     </div>
   </div>
 </div>
