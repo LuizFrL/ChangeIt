@@ -6,6 +6,7 @@ import {FooterComponent} from './footer/footer.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {GasStationModule} from '../gas-station/gas-station.module';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
+    GasStationModule
   ],
   exports: [
     HeaderComponent,

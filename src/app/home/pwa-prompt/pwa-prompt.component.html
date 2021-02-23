@@ -1,15 +1,41 @@
-<mat-toolbar *ngIf="data.mobileType === 'android'" color="primary" class="android-prompt">
-  <button mat-button (click)="installPwa()">
-    Instalar aplicação
-  </button>
-  <button mat-icon-button (click)="close()">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-toolbar>
+<button mat-icon-button (click)="close()">
+  <mat-icon>close</mat-icon>
+</button>
 
-<div *ngIf="data.mobileType === 'ios'" class="ios-prompt">
-  <button class="close-ios-inv" mat-button color="primary" (click)="close()">
-    <mat-icon>close</mat-icon>
-  </button>
-  <div>To install this web app on your device tap the Menu button and then 'Add to Home screen' button</div>
+<app-animation-lottie [lottieConfig]="lottieConfig"></app-animation-lottie>
+<div class="container-fluid">
+  <div class="row text-center">Para ter uma experiencia mais imersiva, que tal instalar nossa aplicação? É bem leve e
+    extremamente fácil!!
+  </div>
+</div>
+<div class="text-left mt-2 p-0"><b>Como faço para instalar?</b></div>
+
+<div *ngIf="data.mobileType === 'android'">
+  <div class="row col-12 text-left pt-2" style="font-size: 14px">É muito simples, basta clicar no botão abaixo que
+    iremos instalar o aplicativo para você!
+  </div>
+  <div class="row mt-5">
+    <div class="col-12">
+      <button mat-raised-button color="primary" (click)="installPwa()">
+        Instalar aplicação
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="data.mobileType === 'ios'" style="font-size: 14px">
+  <div class="row text-left col-12">Para instalar, deve seguir 2 passos simples:</div>
+  <div class="row text-left col-12 font-weight-bold mt-1">1º Passo:</div>
+  <div class="row text-left col-12 ml-1 align-items-center">Você precisa clicar no botão
+    <div class="pl-1"><img class="img-thumbnail"
+                           src="https://res.cloudinary.com/knowgas/image/upload/c_scale,r_0,w_25/v1614089545/Know%20Gas/Iphone%20Buttons/Iphone%20Options%20button.jpg"
+                           alt="Iphone button"></div>
+  </div>
+  <div class="row text-left col-12 font-weight-bold">2º Passo:</div>
+  <div class="row text-left col-12 ml-1">Procurar na listas de opções esse botão
+    <div class="pl-1 pr-1"><img src="https://res.cloudinary.com/knowgas/image/upload/c_scale,h_30/v1614090353/Know%20Gas/Iphone%20Buttons/Adicionar_a_tela_de_inicio_iphone_aqctmy.jpg"
+                           alt="Iphone button"></div>
+    e clique nele.
+  </div>
+  <div class="row text-left col-12 pt-2">Pronto, o APP pode ser encontrado na sua tela inicial :D</div>
 </div>
