@@ -1,0 +1,16 @@
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Rating</th>
+      <th scope="col">Feedback</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let feedback of feedbacks$ | async">
+      <td>{{ feedback.rating }}</td>
+      <td>{{ feedback.feedback }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
