@@ -11,8 +11,9 @@ export const environment = {
       projectId: 'fuelcompanyhash',
       storageBucket: 'fuelcompanyhash.appspot.com',
       messagingSenderId: '134228045047',
-      appId: '1:134228045047:web:cc083ee5e182472d96f7f2'
-    }
+      appId: '1:134228045047:web:cc083ee5e182472d96f7f2',
+      measurementId: 'G-YHL14QP4F8'
+  }
 };
 
 export const apiKey = environment.firebase.apiKey;

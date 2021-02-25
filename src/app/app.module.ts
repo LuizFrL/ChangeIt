@@ -24,6 +24,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {SidebarModule} from './sidebar/sidebar.module';
+import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
 
 export function playerFactory(): LottiePlayer {
   return player;
@@ -43,6 +44,7 @@ const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
     AppRoutingModule,
     AngularFireModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
     HttpClientModule,
