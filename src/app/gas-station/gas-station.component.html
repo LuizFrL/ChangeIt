@@ -9,6 +9,10 @@
               (click)="clickDebit()">
         Débito
       </button>
+    <button *ngIf="userService.isAdminUser$ | async" class="col-4 m-2 col-lg-2 color-button" mat-raised-button
+              (click)="clickNearby()">
+        + Próximos
+      </button>
   </div>
   <div class="row pt-3">
     <app-form-distance (changeWantedDistance)="onChangeWantedDistance($event)"></app-form-distance>

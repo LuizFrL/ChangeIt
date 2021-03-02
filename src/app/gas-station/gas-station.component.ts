@@ -4,6 +4,7 @@ import {GasStationService} from '../core/gas-station/gas-station.service';
 import {FormBuilder} from '@angular/forms';
 import {UserService} from '../core/user/user.service';
 import {map} from 'rxjs/operators';
+import {getDistance} from '../core/utils';
 
 @Component({
   selector: 'app-gas-station',
@@ -17,9 +18,10 @@ export class GasStationComponent implements OnInit {
   lookingForGasStation = true;
   hasGasStation;
 
-  priceOrdersAvailable: object = {
+  priceOrdersAvailable = {
     credit: 'Values.gasoline.Credit',
-    moneyDebit: 'Values.gasoline.MoneyDebit'
+    moneyDebit: 'Values.gasoline.MoneyDebit',
+    nearby: 'coordinates.actualUserDistance'
   };
 
   actualOrder = 'Values.gasoline.MoneyDebit';
@@ -29,18 +31,23 @@ export class GasStationComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private gasStationService: GasStationService,
-    private userService: UserService
+    public userService: UserService
   ) {
   }
 
   ngOnInit(): void {
     this.userService.currentRegion$.subscribe(
       region => {
-        // '-158|-480'
         this.gasStations$ = this.gasStationService.getAllByRegion(region).pipe(
           map(gasStations => {
               this.lookingForGasStation = false;
               this.hasGasStation = !!gasStations.length;
+              gasStations.forEach(
+                gasStation => {
+                  gasStation.coordinates.actualUserDistance = getDistance(this.userService.currentPosition$.getValue(),
+                    gasStation.coordinates);
+                }
+              );
               return gasStations;
             }
           )
@@ -65,6 +72,7 @@ export class GasStationComponent implements OnInit {
       this.creditChecked = false;
     }
   }
+
   clickCredit(): void {
     // @ts-ignore
     this.actualOrder = this.priceOrdersAvailable.credit;
@@ -72,5 +80,11 @@ export class GasStationComponent implements OnInit {
     if (this.moneyDebitChecked) {
       this.moneyDebitChecked = false;
     }
+  }
+
+  clickNearby(): void {
+    this.actualOrder = this.priceOrdersAvailable.nearby;
+    this.moneyDebitChecked = false;
+    this.creditChecked = false;
   }
 }
